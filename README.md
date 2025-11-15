@@ -58,8 +58,8 @@ ________________________________________
 |3. Implementare backend	| Creare API REST în Node.js + Express, conectare la baza de date	| Server funcțional + endpoints testate cu Postman |
 |4. Implementare frontend	| Dezvoltarea componentelor React (login, dashboard, pagină articole etc.)	| Aplicație SPA funcțională |
 |5. Integrare & testare	| Conectarea front-endului cu back-endul, validare inputuri, testare cu date reale |	Aplicație complet funcțională |
-|6. Deploy & documentare |	Publicarea aplicației pe un server gratuit (Render, Vercel, sau Railway) + completarea README	Link public + documentație finală
-7. Prezentare finală	Demonstrarea aplicației și codului pe GitHub	Predare finală
+|6. Deploy & documentare |	Publicarea aplicației pe un server gratuit (Render, Vercel, sau Railway) + completarea README	 | Link public + documentație finală |
+|7. Prezentare finală    |	Demonstrarea aplicației și codului pe GitHub	| Predare finală |
 
 
 
