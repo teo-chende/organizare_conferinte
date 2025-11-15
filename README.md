@@ -51,13 +51,14 @@ Se urmărește automatizarea proceselor de:  înscriere la conferință, trimite
 - Date persistente și validate (nu se acceptă câmpuri goale sau fișiere non-PDF).
 ________________________________________
 # PLAN DE PROIECT (pe etape)
-Etapă	Descriere activitate	Rezultat final
-1. Analiză și specificații	Identificarea cerințelor aplicației, definirea arhitecturii generale și a modelelor de date	Documentația de cerințe + schema bazei de date
-2. Proiectare	Proiectarea arhitecturii (front-end, back-end, DB), design-ul interfeței 	Prototip interfață + diagrama API
-3. Implementare backend	Creare API REST în Node.js + Express, conectare la baza de date	Server funcțional + endpoints testate cu Postman
-4. Implementare frontend	Dezvoltarea componentelor React (login, dashboard, pagină articole etc.)	Aplicație SPA funcțională
-5. Integrare & testare	Conectarea front-endului cu back-endul, validare inputuri, testare cu date reale	Aplicație complet funcțională
-6. Deploy & documentare	Publicarea aplicației pe un server gratuit (Render, Vercel, sau Railway) + completarea README	Link public + documentație finală
+| Etapă	| Descriere activitate	| Rezultat final |
+|-------|-----------------------|----------------|
+|1. Analiză și specificații |	Identificarea cerințelor aplicației, definirea arhitecturii generale și a modelelor de date |	Documentația de cerințe + schema bazei de date |
+|2. Proiectare	| Proiectarea arhitecturii (front-end, back-end, DB), design-ul interfeței |	Prototip interfață + diagrama API |
+|3. Implementare backend	| Creare API REST în Node.js + Express, conectare la baza de date	| Server funcțional + endpoints testate cu Postman |
+|4. Implementare frontend	| Dezvoltarea componentelor React (login, dashboard, pagină articole etc.)	| Aplicație SPA funcțională |
+|5. Integrare & testare	| Conectarea front-endului cu back-endul, validare inputuri, testare cu date reale |	Aplicație complet funcțională |
+|6. Deploy & documentare |	Publicarea aplicației pe un server gratuit (Render, Vercel, sau Railway) + completarea README	Link public + documentație finală
 7. Prezentare finală	Demonstrarea aplicației și codului pe GitHub	Predare finală
 
 
