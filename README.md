@@ -13,7 +13,8 @@ Proiect tehnologii web - Aplicatie pentru organizare de conferinte
 
 ### Sumar:
 - navigati in directorul proiectului: `cd <cale proiect>`
-- din directourl proiectului, rulati: `npm run help`
+- de aici dati `cd` in `backend-api` (sau `frontend` - inca in lucru, nu este functional)
+- rulati: `npm run help`
 
 ### Detalii:
 ```bash
