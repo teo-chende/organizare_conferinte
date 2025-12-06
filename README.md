@@ -1,65 +1,16 @@
-# organizare_conferinte
-Proiect tehnologii web - Aplicatie pentru organizare de conferinte
+# React + Vite
 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-# APLICAŢIE WEB PENTRU ORGANIZAREA DE CONFERINŢE
+Currently, two official plugins are available:
 
-## 1. Scopul aplicației
-Aplicația web are ca scop gestionarea completă a procesului de organizare a unei conferințe științifice: de la înscrierea autorilor și trimiterea articolelor, până la evaluarea de către revieweri și aprobarea finală de către organizator. Platforma este bazată pe o aplicație web cu arhitectură de tip Single Page Application accesibilă în browser de pe desktop, dispozitive mobile sau tablete (considerând preferințele utilizatorului).
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Se urmărește automatizarea proceselor de:  înscriere la conferință, trimitere și evaluare articole, comunicare între autori și evaluatori, monitorizare a statusului articolelor de către organizatori.
+## React Compiler
 
-## 2. Tipuri de utilizatori
+The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
 
-- Organizator
-  - creează conferințe;
-  - alocă revieweri;
-  - aprobă articole finale;
-  - monitorizează starea fiecărui articol.
-- Autor
-  - se înregistrează la o conferință;
-  - trimite articole pentru evaluare;
-  - primește feedback;
-  - poate retrimite o versiune revizuită.
-- Reviewer
-  - primește automat articole alocate;
-  - oferă feedback și decide dacă un articol este aprobat sau nu.
+## Expanding the ESLint configuration
 
-## 3. Funcționalități principale
-
-| Categoria	| Funcționalitate	| Descriere |
-|-----------|------------------|-----------|
-| Autentificare	| Login/Logout/Register |	Gestionare conturi utilizatori |
-| Organizator   | Creare conferință	    | Setează titlu, dată, tematică, deadline |
-| Autor	        | Trimitere articol     |	Upload fișier PDF și metadate |
-| Reviewer	      | Evaluare articol	    | Feedback text + scor |
-| Sistem        |	Alocare automată revieweri |	2 revieweri per articol |
-| Vizualizare	  | Listă articole și stări	| Afișează articole trimise și progresul |
-
-## 4. Cerințe funcționale
-- CRUD pentru conferințe, articole, utilizatori.
-- Upload de fișiere (PDF-uri).
-- Login bazat pe token JWT.
-- API REST care gestionează toate operațiile (Node.js + Express).
-- Persistență în bază de date relațională (PostgreSQL / MySQL) prin ORM.
-- Frontend SPA realizat în React.
-
-## 5. Cerințe non-funcționale
-- Răspunsurile API sub 300ms pentru cererile simple.
-- Design responsive (desktop, mobil, tabletă).
-- Securizarea parolelor prin hashing .
-- Date persistente și validate (nu se acceptă câmpuri goale sau fișiere non-PDF).
-________________________________________
-# PLAN DE PROIECT (pe etape)
-| Etapă	| Descriere activitate	| Rezultat final |
-|-------|-----------------------|----------------|
-|1. Analiză și specificații |	Identificarea cerințelor aplicației, definirea arhitecturii generale și a modelelor de date |	Documentația de cerințe + schema bazei de date |
-|2. Proiectare	| Proiectarea arhitecturii (front-end, back-end, DB), design-ul interfeței |	Prototip interfață + diagrama API |
-|3. Implementare backend	| Creare API REST în Node.js + Express, conectare la baza de date	| Server funcțional + endpoints testate cu Postman |
-|4. Implementare frontend	| Dezvoltarea componentelor React (login, dashboard, pagină articole etc.)	| Aplicație SPA funcțională |
-|5. Integrare & testare	| Conectarea front-endului cu back-endul, validare inputuri, testare cu date reale |	Aplicație complet funcțională |
-|6. Deploy & documentare |	Publicarea aplicației pe un server gratuit (Render, Vercel, sau Railway) + completarea README	 | Link public + documentație finală |
-|7. Prezentare finală    |	Demonstrarea aplicației și codului pe GitHub	| Predare finală |
-
-
-
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
