@@ -250,19 +250,19 @@ app.post("/articole/:articolId/upload", upload.single("document"), async(req, re
 // GET -> pt ultima versiune postata la un articol
 app.get("/versiuni-articole/:id", async(req, res) => {
     try {
-        const verisiune = await VersiuneArticol.findByPk(req.params.id);
-        if(!verisiune) {
+        const versiune = await VersiuneArticol.findByPk(req.params.id);
+        if(!versiune) {
             return res.status(404).json({error: "nu s-a gasit versiune articol"});
         }
 
         // stabilire tip fisier
-        res.setHeader("Content-Type", verisiune.mimeType);
+        res.setHeader("Content-Type", versiune.mimeType);
 
         // stabilire nume default fisier
         res.setHeader("Content-Disposition", `attachment; filename="paper-v${version.versionNumber}.pdf"`);
 
         // timit fisierul binar
-        res.send(version.document);
+        res.send(versiune.document);
     } catch(err) {
         console.error(err);
         res.status(500).json({ error: err.message });

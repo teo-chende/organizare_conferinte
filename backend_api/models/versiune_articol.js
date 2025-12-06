@@ -25,7 +25,7 @@ const VersiuneArticol = sequelize.define('VersiuneArticol', {
     },
     mimeType: {
         type: DataTypes.STRING, 
-        allowNull: false
+        //allowNull: false
     },
     dataIncarcare: {
         type: DataTypes.DATE,
