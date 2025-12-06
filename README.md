@@ -11,6 +11,52 @@ Proiect tehnologii web - Aplicatie pentru organizare de conferinte
 
 ## 1. Instructiuni rulare aplicatie
 
+### Sumar:
+- navigati in directorul proiectului: `cd <cale proiect>`
+- din directourl proiectului, rulati: `npm run help`
+
+### Detalii:
+```bash
+Directorul proiectului:
+
+/...[cale].../organizare_conferinte
+$ls -1a
+total 12
+.
+..
+.git
+.gitignore
+LICENSE
+README.md
+backend_api
+frontend
+$
+$ cd backend_api/
+$ npm run help
+
+> backend_api@1.0.0 help
+> node helpmsg.js
+
+Navigati in directorul proiectului:
+
+    cd [cale]/organizare_conferinte/backend_api
+
+INSTALARE:
+    npm install
+
+    Comanda va instala dependintele specificate in package.json la categoria dependinte.
+
+RULARE:
+    Din directorul proiectului (unde se gaseste fisierul package.json) executati:
+
+    npm run + una din comenzile de mai jos:
+
+        help:       Afiseaza acest mesaj.
+        apiserver:  Pornire server backend.
+        init-db:    Creare baza de date si tabele pe baza modelelor.
+
+$
+```
 ## 2. Scopul aplicației
 Aplicația web are ca scop gestionarea completă a procesului de organizare a unei conferințe științifice: de la înscrierea autorilor și trimiterea articolelor, până la evaluarea de către revieweri și aprobarea finală de către organizator. Platforma este bazată pe o aplicație web cu arhitectură de tip Single Page Application accesibilă în browser de pe desktop, dispozitive mobile sau tablete (considerând preferințele utilizatorului).
 
