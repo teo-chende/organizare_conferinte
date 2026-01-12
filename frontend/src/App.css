@@ -1,5 +1,14 @@
 #root {
-  margin: 0.2cm;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3px;
+  /*text-align: center;*/
+}
+
+.continut {
+    padding: 5px;
+    display:block;
+    /*background:bisque;*/
 }
 
 .logo {
@@ -34,6 +43,15 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+.articoleBazaDate {
+  border-width: 1px;
+  border-style: solid;
+  border-collapse:collapse;
+}
+
+.articoleBazaDate td {
+  border-width: 1px;
+  border-style: solid;
+  padding-left: 4px;
+  padding-right: 4px;
 }
