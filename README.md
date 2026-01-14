@@ -5,6 +5,7 @@ Proiect tehnologii web - Aplicatie pentru organizare de conferinte
 
 # Cuprins
 
+1. [Accesare aplicatie](#accesare-aplicatie)
 1. [Instructiuni rulare aplicatie](#1-instructiuni-rulare-aplicatie)
 1. [Scopul aplicatiei](#2-scopul-aplicației)
 1. [Tipuri de utilizatori](#3-tipuri-de-utilizatori)
