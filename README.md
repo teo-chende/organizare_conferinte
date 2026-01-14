@@ -10,6 +10,28 @@ Proiect tehnologii web - Aplicatie pentru organizare de conferinte
 1. [Scopul aplicatiei](#2-scopul-aplicației)
 1. [Tipuri de utilizatori](#3-tipuri-de-utilizatori)
 
+# Accesare aplicatie
+
+Pentru a putea accesa aplicatia, am instalat-o pe platforme de hosting cu access fara costuri.
+
+Frontend-ul l-am instalat pe Netlify iar backend-ul pe Render.
+Pentru instalare este nevoie de creare de conturi pe cele doua platforme. 
+
+Pe Render - am instala backend-ul din branch-ul `main`.
+
+Pe Netlify - a fost nevoie sa modific URL-ul api-ului, in fisierul `frontend/src/redux/api.js`. Initial, acest url continea in partea de host:port `localhost:3001` si a fost nevoie sa fie modificat catre serverul de pe Render.
+Am facut un branch separat - `main_deploy` pentru aceasta schimbare - pentru a lasa branch-ul `main` pentru rularea locala a aplicatiei.
+
+`IMPORTANT - de utilizat branch main pentru a rula aplicatia local`
+
+Mai jos puteti vedea link-urile pentru frontend si backend.
+
+### Frontend - instalat pe Netlify:
+https://organizare-conferinte-20260114.netlify.app/organizator
+
+### Backend - instalat pe Render
+https://organizare-conferinte.onrender.com/
+
 ## 1. Instructiuni rulare aplicatie
 
 ### Sumar:
