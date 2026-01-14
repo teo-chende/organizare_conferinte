@@ -27,7 +27,7 @@ Am facut un branch separat - `main_deploy` pentru aceasta schimbare - pentru a l
 Mai jos puteti vedea link-urile pentru frontend si backend.
 
 ### Frontend - instalat pe Netlify:
-https://organizare-conferinte-20260114.netlify.app/organizator
+https://organizare-conferinte-20260114.netlify.app
 
 ### Backend - instalat pe Render
 https://organizare-conferinte.onrender.com/
