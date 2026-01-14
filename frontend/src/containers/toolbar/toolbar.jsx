@@ -8,17 +8,25 @@ import MeniuUtilizatori from './components/meniu_utilizatori.jsx';
 import MeniuLogin from './components/meniu_login.jsx'
 
 import { useContext } from "react";
-//import UserContext from "../../context/UserContext.jsx";
+import UserContext from "../../context/user_context.jsx";
 
 function Toolbar() {
-    //const { user } = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     return(
         <div className="toolbar">
             <div className="grupPrincipal">
                 <MeniuPaginaPrincipala />
-                <MeniuRoluri />
-                <MeniuUtilizatori />
+                {
+                    user.isAuthenticated && user.rol==="Organizator"
+                    ?
+                    <>
+                        <MeniuRoluri />
+                        <MeniuUtilizatori />
+                    </> 
+                    : 
+                    <></>
+                }
             </div>
             <MeniuLogin />
         </div>
@@ -26,11 +34,3 @@ function Toolbar() {
 }
 
 export default Toolbar;
-
-              /*{user.isAuthenticated ? (
-                    <>
-                    <MeniuRoluri />
-                    <MeniuUtilizatori />
-                    </>
-                ) : (<></>)
-                }*/

@@ -3,6 +3,8 @@
 import express from "express"
 import cors from "cors";
 
+import { hashPassword, passHashCompare } from "./utils.js"
+
 const app = express();
 app.use(cors());
 
@@ -167,9 +169,11 @@ app.put("/utilizatori/:id", async(req, res) => {
 });
 
 // DELETE -> un utilizator dupa id
-app.delete("/utilizatori/:id", async(req, res) => {
+app.delete("/utilizator/sterge", async(req, res) => {
     try {
-        const user = await Utilizator.findByPk(req.params.id);
+        console.log(req.body)
+        res.status(200).req(body)
+        /*const user = await Utilizator.findByPk(req.params.id);
 
         if(user) {
             const result = await user.destroy();
@@ -177,7 +181,73 @@ app.delete("/utilizatori/:id", async(req, res) => {
         } else {
             res.status(404).json({error: `User with id: ${req.params.id} not found`})
         }
+        */
     } catch(err) {
+        res.status(500).json(err);
+    }
+});
+
+
+// GET -> un utilizator dupa id
+app.post("/utilizatori/:nume", async(req, res) => {
+    try {
+        const user = await Utilizator.findByPk(req.params.nume);
+
+        if(user) {
+            res.status(200).json(user);
+        } else {
+            res.status(404).json({error: `User with id: ${req.params.id} not found`})
+        }
+    } catch(err) {
+        res.status(500).json(err);
+    }
+});
+
+// LOGIN -> pe baza user si parola primite de la frontend
+app.post("/login", async(req, res) => {
+    try {
+        //datele primite de la frontend - cele tastate in formular si trimise la apasarea butonului Trimite
+        const { user, pass } = req.body;
+        console.log(user, pass)
+
+        const userObj = await Utilizator.findOne({
+            where: {
+                username: user
+            },
+            include: {
+                model: Rol,            // adaug si rolul fiecarui utilizator
+                attributes: ['name']
+            }
+        });
+
+        let ret;
+        if(userObj) {
+            console.log(userObj)
+        
+            console.log("user pass from DB :", userObj.password)
+            //hash_pass = await hashPassword(pass)
+            const pass_ok = await passHashCompare(pass, userObj.password)
+            console.log(pass_ok)
+
+            if(pass_ok) {
+                ret = { nume: userObj.username, rol: userObj.Rol.name }
+            }
+        } else {
+            ret = { nume: null, rol: null }
+        }
+
+        res.status(200).json(ret)
+        /*const user = await Utilizator.findByPk(req.params.id);
+
+        if(user) {
+            const result = await user.destroy();
+            res.status(200).json(`User with id ${req.params.id} is deleted`);
+        } else {
+            res.status(404).json({error: `User with id: ${req.params.id} not found`})
+        }
+        */
+    } catch(err) {
+        console.log(req.body, err)
         res.status(500).json(err);
     }
 });

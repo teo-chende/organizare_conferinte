@@ -1,5 +1,6 @@
 // popularea tabelelor
 import { sequelize } from "./sequelize.js";
+import { hashPassword } from "./utils.js"
 
 //modele - care au corespondent modele in baza de date
 import Rol from "./models/rol.js"
@@ -10,7 +11,7 @@ import Articol from "./models/articol.js";
 import VersiuneArticol from "./models/versiune_articol.js";
 
 import crypto from 'crypto';
-import bcrypt from 'bcrypt';
+
 import { promises } from "fs";
 
 async function seedDatabase() {
@@ -105,9 +106,10 @@ async function seedDatabase() {
     }
 } 
 
+/*
 async function hashPassword(password) {
   return bcrypt.hash(password, 12);
-}
+}*/
 
 console.log("Generare baza de date si tabele");
 (async () => await seedDatabase())(); 
