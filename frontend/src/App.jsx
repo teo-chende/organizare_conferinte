@@ -1,41 +1,139 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Navbar from './components/common/Navbar';
+import ProtectedRoute from './components/common/ProtectedRoute';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Home from './pages/Home';
+
+// Dashboards
+import DashboardOrganizator from './components/organizator/DashboardOrganizator';
+import DashboardAutor from './components/autor/DashboardAutor';
+import DashboardReviewer from './components/reviewer/DashboardReviewer';
+
+// Componente specifice
+import CreateConferinta from './components/organizator/CreateConferinta';
+import ManageConferinta from './components/organizator/ManageConferinta';
+import SubmitArticol from './components/autor/SubmitArticol';
+import ArticoleleMe from './components/autor/ArticoleleMe';
+import ArticoleDeReviewed from './components/reviewer/ArticoleDeReviewed';
+import ReviewForm from './components/reviewer/ReviewForm';
+
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+
+  // Redirecționare către dashboard-ul corespunzător rolului
+  const getDashboardPath = () => {
+    if (!user) return '/';
+    
+    switch (user.rolId) {
+      case 1: return '/organizator';
+      case 2: return '/reviewer';
+      case 3: return '/autor';
+      default: return '/';
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://github.com/teo-chende/organizare_conferinte" target="_blank">vezi pe github</a>
+    <div className="app">
+      <Navbar />
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route 
+            path="/login" 
+            element={isAuthenticated ? <Navigate to={getDashboardPath()} /> : <Login />} 
+          />
+          <Route 
+            path="/register" 
+            element={isAuthenticated ? <Navigate to={getDashboardPath()} /> : <Register />} 
+          />
+
+          {/* Rute Organizator */}
+          <Route 
+            path="/organizator" 
+            element={
+              <ProtectedRoute requiredRole={1}>
+                <DashboardOrganizator />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/organizator/conferinta-noua" 
+            element={
+              <ProtectedRoute requiredRole={1}>
+                <CreateConferinta />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/organizator/conferinta/:id" 
+            element={
+              <ProtectedRoute requiredRole={1}>
+                <ManageConferinta />
+              </ProtectedRoute>
+            } 
+          />
+
+          {/* Rute Autor */}
+          <Route 
+            path="/autor" 
+            element={
+              <ProtectedRoute requiredRole={3}>
+                <DashboardAutor />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/autor/submit-articol" 
+            element={
+              <ProtectedRoute requiredRole={3}>
+                <SubmitArticol />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/autor/articolele-mele" 
+            element={
+              <ProtectedRoute requiredRole={3}>
+                <ArticoleleMe />
+              </ProtectedRoute>
+            } 
+          />
+
+          {/* Rute Reviewer */}
+          <Route 
+            path="/reviewer" 
+            element={
+              <ProtectedRoute requiredRole={2}>
+                <DashboardReviewer />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/reviewer/articole" 
+            element={
+              <ProtectedRoute requiredRole={2}>
+                <ArticoleDeReviewed />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/reviewer/review/:articolId" 
+            element={
+              <ProtectedRoute requiredRole={2}>
+                <ReviewForm />
+              </ProtectedRoute>
+            } 
+          />
+
+          <Route path="*" element={<div className="not-found"><h2>404 - Pagină negăsită</h2></div>} />
+        </Routes>
       </div>
-      <h1>Organizator Conferinte</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Descriere
-          Aplicația trebuie să permită înregistrarea organizarea unor conferințe științifice, cu trimiterea și aprobarea unor articole.
-        </p>
-        <p>
-        Platforma este bazată pe o aplicație web cu arhitectură de tip Single Page Application accesibilă în browser de pe desktop, dispozitive mobile sau tablete (considerând preferințele utilizatorului).
-        Funcționalități (minime)
-        </p>
-        <p>
-        Aplicația are trei tipuri de utilizatori, organizatori, revieweri și autori.
-        Un organizator poate crea o conferință și aloca o serie de revieweri
-        Un autor se poate înregistra la o conferință și poate face o propunere de articol
-        La primirea articolului, se alocă automat 2 revieweri pentru articol
-        Reviewer-i pot aproba articolul sau pot da feed-back autorului pentru modificarea lui
-        Autorul poate încărca o nouă versiune a unui articol pe baza feed-back-ului primit
-        Organizatorul poate monitoriza starea articolelor trimise
-        </p>
-      </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

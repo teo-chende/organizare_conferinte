@@ -9,7 +9,7 @@ const Rol = sequelize.define('Rol', {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull:false,
+        allowNull: false,
         unique: true,
     },
     descriere: {
@@ -22,4 +22,3 @@ const Rol = sequelize.define('Rol', {
 });
 
 module.exports = Rol;
-

@@ -1,4 +1,3 @@
-
 const help_msg = `
 Navigati in directorul proiectului:
     
@@ -17,6 +16,7 @@ RULARE:
         help:       Afiseaza acest mesaj.
         apiserver:  Pornire server backend.
         init-db:    Creare baza de date si tabele pe baza modelelor.
+        dev:        Porneste clientul - partea de frontend.
 
 `;
 

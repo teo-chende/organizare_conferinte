@@ -1,7 +1,6 @@
 const sequelize = require('../sequelize');
 const { DataTypes } = require('sequelize');
-
-const Utilizator = require("./utilizator");                   // import entitatea utilizator din acelasi sub folder
+const Utilizator = require("./utilizator");
 
 const Conferinta = sequelize.define('Conferinta', {
     id: {
@@ -11,7 +10,7 @@ const Conferinta = sequelize.define('Conferinta', {
     },
     titlu: {
         type: DataTypes.STRING,
-        allowNull:false,
+        allowNull: false,
         unique: true,
     },
     descriere: {

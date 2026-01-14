@@ -1,9 +1,8 @@
 const sequelize = require('../sequelize');
 const { DataTypes } = require('sequelize');
-
 const Articol = require("./articol");
-const { version } = require('os');
 
+// Fiecare articol poate avea mai multe versiuni (PDF-uri)
 const VersiuneArticol = sequelize.define('VersiuneArticol', {
     id: {
         type: DataTypes.INTEGER,
@@ -12,7 +11,10 @@ const VersiuneArticol = sequelize.define('VersiuneArticol', {
     },
     articolId: {
         type: DataTypes.INTEGER,
-        references: { model: Articol, key: 'id' },
+        references: { 
+            model: Articol, 
+            key: 'id' 
+        },
         allowNull: false
     },
     nrVersiune: {
@@ -20,22 +22,24 @@ const VersiuneArticol = sequelize.define('VersiuneArticol', {
         allowNull: false
     },
     document: {
-        type: DataTypes.BLOB('long'),               // salvez documentul in binar cu fisier BLOB
+        type: DataTypes.BLOB('long'),  // Salvează fișierul în format binar
         allowNull: false
     },
     mimeType: {
-        type: DataTypes.STRING, 
-        //allowNull: false
+        type: DataTypes.STRING,
+        allowNull: true
     },
     dataIncarcare: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
     },
     comentariiAutor: {
-        type: DataTypes.TEXT
+        type: DataTypes.TEXT,
+        allowNull: true
     }
 }, {
     tableName: "VersiuneArticole",
-    timestamps: false                               // dezactivează createdAt + updatedAt
+    timestamps: false
 });
+
 module.exports = VersiuneArticol;

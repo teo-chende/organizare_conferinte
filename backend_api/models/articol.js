@@ -1,12 +1,10 @@
 const sequelize = require('../sequelize');
 const { DataTypes } = require('sequelize');
-
 const Utilizator = require("./utilizator");
-const Conferinta = require("./conferinta")
+const Conferinta = require("./conferinta");
 
-
-// tabela articol stocheaza informatii generale despre articol
-// articolul efectiv este stocat in versiune articol
+// Tabela articol stochează informații generale despre articol
+// Articolul efectiv (PDF) este stocat în VersiuneArticol
 const Articol = sequelize.define('Articol', {
     id: {
         type: DataTypes.INTEGER,
@@ -15,12 +13,12 @@ const Articol = sequelize.define('Articol', {
     },
     titlu: {
         type: DataTypes.STRING,
-        allowNull:false,
+        allowNull: false,
         unique: true,
     },
     status: {
         type: DataTypes.ENUM("submitted", "in_curs_de_evaluare", "acceptat", "revizuire", "respins"),
-            defaultValue: "submitted"
+        defaultValue: "submitted"
     },
     conferintaId: {
         type: DataTypes.INTEGER,
@@ -32,11 +30,15 @@ const Articol = sequelize.define('Articol', {
     },
     autorId: {
         type: DataTypes.INTEGER,
-        references: { model: Utilizator, key: 'id' },
+        references: { 
+            model: Utilizator, 
+            key: 'id' 
+        },
         allowNull: false
     }
 }, {
     tableName: "Articole",
-    timestamps: false                               // dezactivează createdAt + updatedAt
+    timestamps: false
 });
+
 module.exports = Articol;

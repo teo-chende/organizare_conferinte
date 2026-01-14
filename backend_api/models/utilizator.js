@@ -1,7 +1,7 @@
 const sequelize = require('../sequelize');
 const { DataTypes } = require('sequelize');
+const Rol = require("./rol");
 
-const Rol = require("./rol");                   // import entitatea rol din acelasi sub folder
 const Utilizator = sequelize.define('Utilizator', {
     id: {
         type: DataTypes.INTEGER,
@@ -32,11 +32,11 @@ const Utilizator = sequelize.define('Utilizator', {
             model: Rol,
             key: "id"
         },
-        defaultValue: 3                             // rolul Autor implicit
+        defaultValue: 3  // Autor implicit
     }
 }, {
     tableName: "Utilizatori",
-    timestamps: false                               // dezactivează createdAt + updatedAt
+    timestamps: false
 });
 
 module.exports = Utilizator;
